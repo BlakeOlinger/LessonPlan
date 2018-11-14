@@ -1,0 +1,131 @@
+// AUTONOMOUS SECTION  
+
+// Speed 15-100 dps  Time 500-5000
+void AutoDriveForward(int speed, int time) {
+    if(speed < 15 || speed > 100) {
+        printError();
+    } else if(time < 500 || time > 5000) {
+        printError();
+    } else {
+        DriveMotorLeft.spin(directionType::fwd, speed, velocityUnits::dps);
+        DriveMotorRight.spin(directionType::rev, speed, velocityUnits::dps);
+        
+        task::sleep(time);
+        
+        DriveMotorLeft.stop();
+        DriveMotorRight.stop();
+        
+        task::sleep(700);
+    }
+}
+
+void AutoDriveBackward(int speed, int time) {
+    if(speed < 15 || speed > 100) {
+        printError();
+    } else if(time < 500 || time > 5000) {
+        printError();
+    } else {
+        DriveMotorLeft.spin(directionType::rev, speed, velocityUnits::dps);
+        DriveMotorRight.spin(directionType::fwd, speed, velocityUnits::dps);
+        
+        task::sleep(time);
+        
+        DriveMotorLeft.stop();
+        DriveMotorRight.stop();
+        task::sleep(700);
+    }
+}
+
+void AutoDriveTurnLeft(int speed, int time) {
+    if(speed < 15 || speed > 100) {
+        printError();
+    } else if(time < 500 || time > 5000) {
+        printError();
+    } else {
+        DriveMotorLeft.spin(directionType::rev, speed, velocityUnits::dps);
+        DriveMotorRight.spin(directionType::rev, speed, velocityUnits::dps);
+        
+        task::sleep(time);
+        
+        DriveMotorLeft.stop();
+        DriveMotorRight.stop();
+        
+        task::sleep(700);
+    }
+}
+
+void AutoDriveTurnRight(int speed, int time) {
+    if(speed < 15 || speed > 100) {
+        printError();
+    } else if(time < 500 || time > 5000) {
+        printError();
+    } else {
+        DriveMotorLeft.spin(directionType::fwd, speed, velocityUnits::dps);
+        DriveMotorRight.spin(directionType::fwd, speed, velocityUnits::dps);
+        
+        task::sleep(time);
+        
+        DriveMotorLeft.stop();
+        DriveMotorRight.stop();
+        
+        task::sleep(700);
+    }
+}
+
+void AutoMoveArmUp(int time) {
+    if(time < 500 || time > 5000) {
+        printError();
+    } else {
+        ArmMotor.startRotateTo(30, rotationUnits::deg, 15, velocityUnits::dps);
+        
+        task::sleep(time);
+        
+        ArmMotor.stop();
+        
+        task::sleep(700);
+    }
+}
+
+void AutoMoveArmDown(int time) {
+    if(time < 500 || time > 5000) {
+        printError();
+    } else {
+        ArmMotor.startRotateTo(-30, rotationUnits::deg, 15, velocityUnits::dps);
+        
+        task::sleep(time);
+        
+        ArmMotor.stop();
+        
+        task::sleep(700);
+    }
+}
+
+void AutoClawOpen(int time) {
+    if(time < 500 || time > 5000) {
+        printError();
+    } else {
+        ClawMotor.startRotateTo(30, rotationUnits::deg, 15, velocityUnits::dps);
+        
+        task::sleep(time);
+        
+        ArmMotor.stop();
+        
+        task::sleep(700);
+    }
+}
+
+void AutoClawClose(int time) {
+    if(time < 500 || time > 5000) {
+        printError();
+    } else {
+        ClawMotor.startRotateTo(-30, rotationUnits::deg, 15, velocityUnits::dps);
+        
+        task::sleep(time);
+        
+        ArmMotor.stop();
+        
+        task::sleep(700);
+    }
+}
+
+// END AUTONOMOUS SECTION
